@@ -19,7 +19,22 @@ storage_client = storage.Client()
 bucket = storage_client.bucket(BUCKET_NAME)
 blobs = storage_client.list_blobs(bucket, prefix=PREFIX)
 
+def get_schema_from_csv(blob):
+
+    header = blob.download_as_text().split("\n")[0]
+    columns = header.split(",")
+
+    schema = []
+
+    for col in columns:
+        clean_col = col.strip().replace('"', '')
+        schema.append(bigquery.SchemaField(clean_col, "STRING"))
+
+    return schema
+
+
 def external_tables():
+
     for blob in blobs:
 
         if not blob.name.endswith(".csv"):
@@ -39,19 +54,24 @@ def external_tables():
         except NotFound:
             pass
 
+        # logging.info(f"Criando schema para {file_name}")
+
+        schema = get_schema_from_csv(blob)
+
         external_config = bigquery.ExternalConfig("CSV")
         external_config.source_uris = [
             f"gs://{BUCKET_NAME}/{blob.name}"
         ]
 
         external_config.options.skip_leading_rows = 1
-        external_config.autodetect = True
+        external_config.autodetect = False
 
-        table = bigquery.Table(table_id)
+        table = bigquery.Table(table_id, schema=schema)
         table.external_data_configuration = external_config
 
         bq_client.create_table(table)
 
         logging.info(f"--> Tabela criada: {table_name} <--")
-    
+
+
 external_tables()
