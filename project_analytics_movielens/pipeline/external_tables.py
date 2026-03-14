@@ -2,8 +2,14 @@ import logging
 from google.cloud import bigquery
 from google.cloud import storage
 from google.cloud.exceptions import NotFound
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 
-PROJECT_ID = "vaulted-journal-489619-h7"
+env_path = Path(__file__).resolve().parent.parent / 'config' / '.env'
+load_dotenv(env_path)
+
+PROJECT_ID = os.getenv('GCP_PROJECT_ID')
 DATASET_ID = "movielens_raw"
 BUCKET_NAME = "bucket-project-movielens"
 PREFIX = "bronze/"
