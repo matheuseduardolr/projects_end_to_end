@@ -34,17 +34,16 @@ def run_sql(file_name: str):
     logging.info(f"Query executada: {file_name}")
 
 
-def create_dim_movies():
+def create_dimensions():
     run_sql("dimensions/dim_movies.sql")
 
 
-def create_fact_ratings():
+def create_facts():
     run_sql("facts/fact_ratings.sql")
 
 
 def transform():
-    # create_dim_movies()
-    create_fact_ratings()
-
+    create_dimensions()
+    create_facts()
 
 transform()

@@ -1,0 +1,10 @@
+services:
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "3000:3000"
+    volumes:
+      - metabase-data:/metabase-data
+
+volumes:
+  metabase-data:
