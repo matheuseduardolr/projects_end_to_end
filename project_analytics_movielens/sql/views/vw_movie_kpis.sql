@@ -11,6 +11,5 @@ SELECT
     MIN(r.rating_timestamp) as first_rating,
     MAX(r.rating_timestamp) as last_rating,
 FROM `${PROJECT_ID}.movielens_analytics.fact_ratings` r
-JOIN `${PROJECT_ID}.movielens_analytics.dim_movies` m
-ON r.movie_id = m.movie_id
+JOIN `${PROJECT_ID}.movielens_analytics.dim_movies` m ON r.movie_id = m.movie_id
 GROUP BY 1, 2, 3, 4;
