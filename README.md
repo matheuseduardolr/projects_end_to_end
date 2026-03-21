@@ -2,7 +2,7 @@
 
 Repositório contendo projetos práticos end-to-end abrangendo todo o ciclo de dados, desde ingestão até visualização, com foco em pipelines, modelagem analítica, cloud e BI.
 
-## Projetos
+## 
 
 ### project_analytics_movielens
 - Pipeline ELT completo para ingestão, processamento e análise de dados do dataset MovieLens.
