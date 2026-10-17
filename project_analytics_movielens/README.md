@@ -1,9 +1,9 @@
-# 🎬 MovieLens Analytics End to End
+# MovieLens Analytics End to End
 
 Projeto end-to-end para extração, modelagem dimensional e visualização de dados de entretenimento (MovieLens).
 
 
-## 🚀 Overview
+## Overview
 
 Este projeto implementa um workflow de dados **ELT** utilizando **Python** para automação da ingestão e **Google Cloud Platform** para processamento escalável. O objetivo é transformar arquivos brutos do GroupLens em um ambiente analítico no **BigQuery**, com visualização final via dashboards no **Metabase**.
 
@@ -12,7 +12,7 @@ Este projeto implementa um workflow de dados **ELT** utilizando **Python** para 
 
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Cloud / Data:** Google Cloud Storage (GCS) e BigQuery
   
@@ -24,7 +24,7 @@ Este projeto implementa um workflow de dados **ELT** utilizando **Python** para 
 
 
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 .
@@ -45,7 +45,7 @@ Este projeto implementa um workflow de dados **ELT** utilizando **Python** para 
 ```
 
 
-## ⚙️ Processo de ELT
+## Processo de ELT
 
 * **Extraction:** Scripts **Python** realizam o processamento dos arquivos .csv e .zip da fonte GroupLens.
 
@@ -53,7 +53,7 @@ Este projeto implementa um workflow de dados **ELT** utilizando **Python** para 
 
 * **Transformation:** Modelagem dimensional **(Star Schema)** no **BigQuery** utilizando **SQL** para limpeza, criação de tabelas de Fato/Dimensão e construção de **Views** de negócio.
 
-## 📊 Dashboard
+## Dashboard
 
 A camada de visualização é servida através de uma instância do **Metabase** integrada diretamente ao **BigQuery**. Os dashboards foram projetados para responder a perguntas de negócio sobre o consumo de mídia e engajamento.
 
